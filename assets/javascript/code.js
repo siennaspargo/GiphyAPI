@@ -8,7 +8,7 @@ $(document).ready(function () {
 
       console.log(giph);
 
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + giph + "&api_key=m49dp38ck8IOmA26XZqQ7kr8Fw6plpoF&limit=10";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + giph + "&api_key=m49dp38ck8IOmA26XZqQ7kr8Fw6plpoF&limit=10" + "pg";
   
     console.log(queryURL);
 
@@ -28,22 +28,24 @@ $(document).ready(function () {
 
        console.log(response);
 
-    });
+       $("IMG").on("click", function(event) {
+
+        var state = $(this).attr("data-state");
+
+        if (state === "still") {
+          $(this).attr("src", $(this).attr("data-animate"));
+          $(this).attr("data-state", "animate");
+        } else {
+          $(this).attr("src", $(this).attr("data-still"));
+          $(this).attr("data-state", "still");
+        }
+        console.log(response);
+        
+      })
 
 
   })
-
-  $(imgUrl).on("click", function(event) {
-
-    if (state === "still") {
-      $(this).attr("src", $(this).attr("data-animate"));
-      $(this).attr("data-state", "animate");
-    } else {
-      $(this).attr("src", $(this).attr("data-still"));
-      $(this).attr("data-state", "still");
-    }
-    console.log(response);
-  }
-  )
+  
+});
 
 });
